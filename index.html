@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Marco Opertti</title>
+  <meta name="description" content="CS @ Penn building LHF, Monk, and more." />
+  <meta name="author" content="Marco Opertti" />
+  <meta name="theme-color" content="#0d1117" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Marco Opertti" />
+  <meta property="og:description" content="CS @ Penn building LHF, Monk, and more." />
+  <meta property="og:url" content="https://marcomercader.github.io" />
+  <!-- Drop an assets/og-image.png (1200x630) here and uncomment to enable a rich preview -->
+  <!-- <meta property="og:image" content="https://marcomercader.github.io/assets/og-image.png" /> -->
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Marco Opertti" />
+  <meta name="twitter:description" content="CS @ Penn building LHF, Monk, and more." />
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%8C%98</text></svg>" />
+
+  <!-- Fonts: preconnect keeps this off the critical render path -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#terminal-section">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav">
+    <a href="#hero" class="nav__brand" aria-label="Marco Opertti, home">MO<span class="accent">.</span></a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#terminal-section">about</a>
+      <a href="#projects">projects</a>
+      <a href="#experience">experience</a>
+    </nav>
+    <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme" aria-pressed="false">
+      <span class="theme-toggle__icon" aria-hidden="true">◐</span>
+    </button>
+  </header>
+
+  <main>
+    <!-- ============ SECTION 1: HERO ============ -->
+    <section id="hero" class="hero">
+      <p class="hero__eyebrow">Hi, my name is</p>
+      <h1 class="hero__name">Marco Opertti</h1>
+      <p class="hero__tagline">CS @ Penn. I like building things people actually use.</p>
+
+      <div class="hero__links">
+        <a class="btn" href="https://github.com/Marcomercader" target="_blank" rel="noopener" aria-label="GitHub profile">
+          <span aria-hidden="true">↗</span> GitHub
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/marco-opertti" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+          <span aria-hidden="true">↗</span> LinkedIn
+        </a>
+        <a class="btn" href="mailto:opertti@sas.upenn.edu" aria-label="Email Marco">
+          <span aria-hidden="true">✉</span> Email
+        </a>
+        <a class="btn btn--accent" href="https://github.com/Marcomercader/resume/raw/main/Marco%20Opertti%20Resume%202026.pdf" target="_blank" rel="noopener" aria-label="Download resume PDF">
+          <span aria-hidden="true">⤓</span> Resume
+        </a>
+      </div>
+
+      <p class="hero__hint">scroll or type <code>help</code> in the terminal below</p>
+    </section>
+
+    <!-- ============ SECTION 2: TERMINAL / ABOUT ============ -->
+    <section id="terminal-section" class="section">
+      <h2 class="section__title"><span class="accent">01.</span> whoami</h2>
+
+      <div class="terminal" id="terminal">
+        <div class="terminal__bar">
+          <span class="terminal__dot terminal__dot--red" aria-hidden="true"></span>
+          <span class="terminal__dot terminal__dot--yellow" aria-hidden="true"></span>
+          <span class="terminal__dot terminal__dot--green" aria-hidden="true"></span>
+          <span class="terminal__title">marco@penn ~ %</span>
+        </div>
+
+        <!-- Output area. Screen-reader announces new lines politely. -->
+        <div class="terminal__body" id="terminal-output" role="log" aria-live="polite" aria-label="Terminal output"></div>
+
+        <!-- Live input line -->
+        <form class="terminal__input-line" id="terminal-form" autocomplete="off">
+          <label class="terminal__prompt" for="terminal-input">marco@penn ~ %</label>
+          <input
+            id="terminal-input"
+            class="terminal__input"
+            type="text"
+            name="command"
+            aria-label="Terminal command input, type help to list commands"
+            autocomplete="off"
+            autocapitalize="off"
+            autocorrect="off"
+            spellcheck="false"
+          />
+        </form>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 3: PROJECTS ============ -->
+    <section id="projects" class="section">
+      <h2 class="section__title"><span class="accent">02.</span> projects</h2>
+
+      <div class="projects">
+        <!-- Project 1: LHF -->
+        <article class="project">
+          <div class="project__media" role="img" aria-label="LHF screenshot placeholder">
+            <span>screenshot coming soon</span>
+          </div>
+          <div class="project__content">
+            <h3 class="project__title">LHF</h3>
+            <ul class="tags" aria-label="Tech stack">
+              <li>Swift</li><li>SwiftUI</li><li>iOS / macOS</li>
+            </ul>
+            <p class="project__desc">
+              A native assignment tracker for college students that pulls deadlines automatically
+              from Canvas and Gradescope and displays them as color-coded urgency cards. Built with
+              a friend, I own design and the full UI. Soft launching at Penn.
+            </p>
+            <div class="project__links">
+              <!-- TODO: fill in real repo URL -->
+              <a class="btn btn--sm" href="#" aria-label="LHF GitHub repository">GitHub</a>
+              <button class="btn btn--sm btn--disabled" type="button" disabled>TestFlight coming soon</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Monk -->
+        <article class="project">
+          <div class="project__media" role="img" aria-label="Monk screenshot placeholder">
+            <span>screenshot coming soon</span>
+          </div>
+          <div class="project__content">
+            <h3 class="project__title">Monk</h3>
+            <ul class="tags" aria-label="Tech stack">
+              <li>TypeScript</li><li>Next.js</li><li>Supabase</li><li>Claude API</li>
+            </ul>
+            <p class="project__desc">
+              A productivity and meditation app combining habit tracking with guided meditation
+              workflows. Focused on behavioral reinforcement loops and clean UX.
+            </p>
+            <div class="project__links">
+              <!-- TODO: fill in real demo + repo URLs -->
+              <a class="btn btn--sm" href="#" aria-label="Monk live demo">Live demo</a>
+              <a class="btn btn--sm" href="#" aria-label="Monk GitHub repository">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: Penn GeoGuessr -->
+        <article class="project">
+          <div class="project__media" role="img" aria-label="Penn GeoGuessr gameplay GIF placeholder">
+            <span>gameplay GIF coming soon</span>
+          </div>
+          <div class="project__content">
+            <h3 class="project__title">Penn GeoGuessr</h3>
+            <ul class="tags" aria-label="Tech stack">
+              <li>Java</li>
+            </ul>
+            <p class="project__desc">
+              A campus GeoGuessr game I built solo, with 50+ Penn locations, logarithmic
+              distance-based scoring, a black-and-white hard mode built with pixel processing,
+              and a persistent high score database.
+            </p>
+            <div class="project__links">
+              <!-- TODO: fill in real repo URL -->
+              <a class="btn btn--sm" href="#" aria-label="Penn GeoGuessr GitHub repository">GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ SECTION 4: EXPERIENCE ============ -->
+    <section id="experience" class="section">
+      <h2 class="section__title"><span class="accent">03.</span> experience</h2>
+
+      <ol class="timeline">
+        <li class="timeline__item">
+          <span class="timeline__when">Summer 2026</span>
+          <div class="timeline__what">
+            <strong>LightFeather</strong> &middot; Technology Intern
+            <span class="timeline__where">Washington DC</span>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__when">Summer 2025</span>
+          <div class="timeline__what">
+            <strong>TakeOff Media</strong> &middot; Junior Web Developer
+            <span class="timeline__where">Montevideo</span>
+            <p class="timeline__note">Built semantic search with Ollama embeddings and Qdrant across 1,000+ educational videos.</p>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__when">2023</span>
+          <div class="timeline__what">
+            <strong>MIDES</strong> &middot; Data Analyst Intern
+            <span class="timeline__where">Uruguay Ministry of Social Development</span>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <span class="timeline__when">2024</span>
+          <div class="timeline__what">
+            <strong>North-West Soccer Camp</strong> &middot; Founder
+            <span class="timeline__where">Washington DC</span>
+          </div>
+        </li>
+      </ol>
+
+      <p class="experience__resume">
+        Full details on my
+        <a href="https://github.com/Marcomercader/resume/raw/main/Marco%20Opertti%20Resume%202026.pdf" target="_blank" rel="noopener">resume PDF</a>.
+      </p>
+    </section>
+  </main>
+
+  <!-- ============ SECTION 5: FOOTER ============ -->
+  <footer class="footer">
+    <nav class="footer__links" aria-label="Footer">
+      <a href="https://github.com/Marcomercader" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/marco-opertti" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:opertti@sas.upenn.edu">Email</a>
+    </nav>
+    <p class="footer__note">Built with vanilla JS. No frameworks were harmed.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
