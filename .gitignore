@@ -3,3 +3,13 @@
 
 # macOS
 .DS_Store
+
+# Raw source material for the design easter egg (187MB video). The web-ready
+# compressed versions live in assets/design/.
+/design minor/
+
+# Raw project cover sources; web-ready copies live in assets/covers/
+/Screenshots-projcovers/
+
+# Raw hobby photos (root folder only); web-ready copies live in assets/hobbies/
+/hobbies/
