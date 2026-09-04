@@ -756,35 +756,6 @@ main { display: block; }
 .activity__title { font-size: 1.05rem; margin: 0 0 4px; }
 .activity__desc { margin: 0; color: var(--text-dim); font-size: 0.92rem; line-height: 1.6; }
 
-/* ---------- Footer ---------- */
-.footer {
-  max-width: var(--maxw);
-  margin: 48px auto 0;
-  padding: 44px 24px 64px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-}
-.footer__links {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 18px;
-}
-.footer__links a {
-  color: var(--text-dim);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  transition: color var(--transition), border-color var(--transition), transform 140ms var(--ease-out);
-}
-.footer__links a:hover { color: var(--accent-text); border-color: var(--accent); text-decoration: none; transform: translateY(-2px); }
-.footer__links .icon { width: 1.2rem; height: 1.2rem; }
-.footer__note { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); margin: 0; }
-
 /* ---------- Scroll reveal (subtle, reduced-motion safe) ---------- */
 .reveal {
   opacity: 0;
