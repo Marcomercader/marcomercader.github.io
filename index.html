@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Marco Opertti</title>
-  <meta name="description" content="CS @ Penn building LHF, Monk, and more." />
+  <meta name="description" content="Marco Opertti studies computer science at Penn and builds useful software." />
   <meta name="author" content="Marco Opertti" />
-  <meta name="theme-color" content="#0a0a0a" />
+  <meta name="theme-color" content="#f7fbff" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Marco Opertti" />
-  <meta property="og:description" content="CS @ Penn building LHF, Monk, and more." />
+  <meta property="og:description" content="Computer science, design, and projects by Marco Opertti." />
   <meta property="og:url" content="https://marcomercader.github.io" />
   <!-- Drop an assets/og-image.png (1200x630) here and uncomment to enable a rich preview -->
   <!-- <meta property="og:image" content="https://marcomercader.github.io/assets/og-image.png" /> -->
@@ -20,14 +20,14 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Marco Opertti" />
-  <meta name="twitter:description" content="CS @ Penn building LHF, Monk, and more." />
+  <meta name="twitter:description" content="Computer science, design, and projects by Marco Opertti." />
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%8C%98</text></svg>" />
 
-  <!-- Fonts: Space Grotesk (whole site) + Space Mono (terminal / code) -->
+  <!-- Classic serif with a practical typewriter face for the terminal -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Courier+Prime:wght@400;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css?v=2" />
 </head>
@@ -35,8 +35,6 @@
   <a class="skip-link" href="#terminal-section">Skip to content</a>
 
   <!-- Scroll progress bar -->
-  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-
   <!-- ============ SVG ICON SPRITE (referenced with <use>) ============ -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor">
@@ -50,6 +48,9 @@
     </symbol>
     <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/>
+    </symbol>
+    <symbol id="i-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>
     </symbol>
     <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
       <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
@@ -104,9 +105,9 @@
     <!-- ============ SECTION 1: HERO ============ -->
     <section id="hero" class="hero">
       <div class="hero__intro">
-        <p class="hero__eyebrow">Hi, my name is</p>
-        <h1 class="hero__name">Marco Opertti</h1>
-        <p class="hero__tagline" id="hero-tagline" aria-label="CS at Penn. I like building things people actually use."></p>
+        <div class="hero__name-row">
+          <h1 class="hero__name">Marco Opertti<span class="hero__asterisk" aria-hidden="true">*</span></h1>
+        </div>
 
         <div class="hero__links">
           <a class="btn" href="https://github.com/Marcomercader" target="_blank" rel="noopener" aria-label="GitHub profile">
@@ -115,32 +116,38 @@
           <a class="btn" href="https://www.linkedin.com/in/marco-opertti" target="_blank" rel="noopener" aria-label="LinkedIn profile">
             <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn
           </a>
-          <button class="btn" id="copy-email-btn" type="button" data-email="opertti@sas.upenn.edu" aria-label="Copy email address to clipboard">
-            <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Email
-          </button>
+          <span class="contact-wrap">
+            <button class="btn" type="button" aria-describedby="contact-note">
+              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Contact
+            </button>
+            <span class="contact-note" id="contact-note" role="tooltip">
+              <a href="mailto:marcoopertti@gmail.com">marcoopertti@gmail.com</a>
+              <a href="tel:+12023203802">202-320-3802</a>
+            </span>
+          </span>
           <a class="btn btn--accent" href="https://github.com/Marcomercader/resume/raw/main/Marco%20Opertti%20Resume%202026.pdf" target="_blank" rel="noopener" aria-label="Download resume PDF">
             <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Resume
           </a>
+          <span class="location-wrap">
+            <button class="btn location-tag" type="button" aria-label="Location" aria-describedby="location-note">
+              <svg class="icon" aria-hidden="true"><use href="#i-location"/></svg>
+            </button>
+            <span class="location-note" id="location-note" role="tooltip">Grew up in DC, originally from Uruguay, now based in Philly.</span>
+          </span>
         </div>
 
-        <p class="hero__hint">scroll down, or press <kbd>/</kbd> to jump into the terminal</p>
       </div>
 
-      <!-- Portrait of Marco: white/grey ASCII render by default, crossfades to the
-           teal binary art on hover. Decorative (the name above is the real heading),
-           so it's hidden from AT. -->
       <div class="hero__portrait" aria-hidden="true">
         <div class="hero__portrait-frame">
-          <pre class="hero__portrait-art" id="hero-portrait"></pre>
-          <img class="hero__portrait-photo" src="assets/marco-ascii.png" alt="" width="741" height="1108" />
+          <img class="hero__portrait-photo" src="assets/marco-headshot.png" alt="" width="1122" height="1402" />
         </div>
-        <span class="hero__portrait-tag">// hover: binary mode</span>
       </div>
     </section>
 
     <!-- ============ SECTION 2: TERMINAL / ABOUT ============ -->
     <section id="terminal-section" class="section">
-      <h2 class="section__title">whoami</h2>
+      <h2 class="section__title">who am i</h2>
 
       <div class="terminal" id="terminal">
         <div class="terminal__bar">
@@ -181,8 +188,6 @@
         <button class="chip" type="button" data-cmd="neofetch">neofetch</button>
         <button class="chip" type="button" data-cmd="projects">projects</button>
         <button class="chip" type="button" data-cmd="skills">skills</button>
-        <button class="chip" type="button" data-cmd="despacito">despacito</button>
-        <button class="chip" type="button" data-cmd="sudo hire-me">sudo hire-me</button>
       </div>
     </section>
 
@@ -202,9 +207,8 @@
               <li>Swift</li><li>SwiftUI</li><li>iOS / macOS</li>
             </ul>
             <p class="project__desc">
-              A native assignment tracker for college students that pulls deadlines automatically
-              from Canvas and Gradescope and displays them as color-coded urgency cards. Built with
-              a friend, I own design and the full UI. Now on the App Store. Launching at Penn in August.
+              An assignment tracker that pulls deadlines from Canvas and Gradescope.
+              I lead the product design and interface. Available on the App Store.
             </p>
             <div class="project__links">
               <a class="btn btn--sm btn--accent" href="https://apps.apple.com/us/app/low-hanging-fruit/id6783911002" target="_blank" rel="noopener" aria-label="Low Hanging Fruit on the App Store">
@@ -229,8 +233,7 @@
               <li>TypeScript</li><li>Next.js</li><li>Supabase</li><li>Claude API</li>
             </ul>
             <p class="project__desc">
-              A productivity and meditation app combining habit tracking with guided meditation
-              workflows. Focused on behavioral reinforcement loops and clean UX.
+              A simple space for habits and guided meditation.
             </p>
             <div class="project__links">
               <!-- TODO: fill in real repo URL -->
@@ -255,9 +258,8 @@
               <li>Java</li><li class="tags__flag">100% hand-written, no AI</li>
             </ul>
             <p class="project__desc">
-              A campus GeoGuessr game I built solo, with 50+ Penn locations, logarithmic
-              distance-based scoring, a black-and-white hard mode built with pixel processing,
-              and a persistent high score database. Written entirely by hand, no AI assistance.
+              A campus guessing game with 50+ Penn locations, distance scoring,
+              a hard mode, and saved high scores. Built solo without AI.
             </p>
             <div class="project__links">
               <a class="btn btn--sm" href="https://github.com/Marcomercader/PennGeoguessr" target="_blank" rel="noopener" aria-label="Penn GeoGuessr GitHub repository">
@@ -279,7 +281,7 @@
           <div class="timeline__what">
             <strong>LightFeather</strong> &middot; Technology Intern
             <span class="timeline__where">Washington DC</span>
-            <p class="timeline__note">Building interactive prototypes for the company website redesign, including scroll-driven video heroes and capability pages.</p>
+            <p class="timeline__note">Building interactive prototypes for a company website redesign.</p>
           </div>
         </li>
         <li class="timeline__item">
@@ -287,7 +289,7 @@
           <div class="timeline__what">
             <strong>TakeOff Media</strong> &middot; Junior Web Developer
             <span class="timeline__where">Montevideo, Uruguay</span>
-            <p class="timeline__note">Built semantic search with Ollama embeddings and Qdrant across 1,000+ educational videos.</p>
+            <p class="timeline__note">Built semantic search across 1,000+ educational videos.</p>
           </div>
         </li>
         <li class="timeline__item">
@@ -295,7 +297,7 @@
           <div class="timeline__what">
             <strong>North-West Soccer Camp</strong> &middot; Founder
             <span class="timeline__where">Washington DC</span>
-            <p class="timeline__note">Founded and ran a youth soccer camp solo: 6 training programs for 50+ campers aged 10 to 12.</p>
+            <p class="timeline__note">Ran six training programs for 50+ young players.</p>
           </div>
         </li>
         <li class="timeline__item">
@@ -303,7 +305,7 @@
           <div class="timeline__what">
             <strong>MIDES</strong> &middot; Data Analyst Intern
             <span class="timeline__where">Montevideo, Uruguay</span>
-            <p class="timeline__note">Built water pricing models during the national drought at Uruguay's Ministry of Social Development and ran a 200+ person survey presented to ministry leadership.</p>
+            <p class="timeline__note">Studied water pricing during Uruguay's national drought.</p>
           </div>
         </li>
       </ol>
@@ -327,7 +329,7 @@
           <div class="edu__stats">
             <div class="edu__stat">
               <span class="edu__stat-label">GPA</span>
-              <span class="edu__stat-value">3.74</span>
+              <span class="edu__stat-value">3.73</span>
             </div>
             <div class="edu__stat">
               <span class="edu__stat-label">class of</span>
@@ -349,8 +351,8 @@
           <span class="edu__label">minors</span>
           <div class="edu__chips">
             <button class="minor-chip" id="design-minor-btn" type="button" aria-haspopup="dialog" aria-controls="design-modal">
-              Design (UX/UI)
-              <svg class="icon" aria-hidden="true"><use href="#i-sparkles"/></svg>
+              Design portfolio (UX/UI)
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
             </button>
             <span class="minor-chip minor-chip--plain">Engineering Entrepreneurship</span>
           </div>
@@ -359,7 +361,8 @@
         <div class="edu__row">
           <span class="edu__label">relevant coursework</span>
           <ul class="tags edu__tags" aria-label="Relevant coursework">
-            <li>Data Structures &amp; Algorithms</li>
+            <li>Data Structures</li>
+            <li>Algorithms</li>
             <li>Discrete Mathematics</li>
             <li>Linear Algebra</li>
             <li>Computer Systems</li>
@@ -368,7 +371,7 @@
           </ul>
         </div>
 
-        <p class="edu__note">// I was originally going to study Mathematical Economics, but after taking courses in different subjects, I knew CIS would enable me to study for what I actually want to do: build.</p>
+        <p class="edu__note">I started in Mathematical Economics, then switched to computer science because I wanted to build.</p>
       </div>
     </section>
 
@@ -376,51 +379,56 @@
     <section id="activities" class="section">
       <h2 class="section__title">activities</h2>
 
-      <div class="activities">
-        <article class="activity">
+      <ul class="activities">
+        <li class="activity">
           <span class="activity__icon" aria-hidden="true"><svg class="icon"><use href="#i-sparkles"/></svg></span>
           <div class="activity__body">
             <h3 class="activity__title">Latino cultural festival</h3>
             <p class="activity__desc">
-              I co-organize Penn's largest Latino cultural festival: 2,000+ attendees and
-              $10,000+ raised for nonprofits across Latin America.
+              I co-organize Penn's largest Latino festival, with 2,000+ attendees and
+              $10,000+ raised for nonprofits.
             </p>
           </div>
-        </article>
+        </li>
 
-        <article class="activity">
+        <li class="activity">
           <span class="activity__icon" aria-hidden="true"><svg class="icon"><use href="#i-award"/></svg></span>
           <div class="activity__body">
             <h3 class="activity__title">UPenn club soccer captain</h3>
             <p class="activity__desc">
-              Captain of the Dolphinos, Penn's club soccer team. Competitive soccer is still
-              a big part of my week.
+              Captain of the Dolphinos, Penn's club soccer team.
             </p>
           </div>
-        </article>
+        </li>
 
-        <article class="activity">
+        <li class="activity">
           <span class="activity__icon" aria-hidden="true"><svg class="icon"><use href="#i-flag"/></svg></span>
           <div class="activity__body">
             <h3 class="activity__title">Wharton Latino</h3>
             <p class="activity__desc">
-              On the membership committee for Wharton Latino, helping run 20+ networking
-              events and mentorship programming for the club's 50+ members.
+              I help run events and mentorship for the club.
             </p>
           </div>
-        </article>
+        </li>
 
-        <article class="activity">
+        <li class="activity">
           <span class="activity__icon" aria-hidden="true"><svg class="icon"><use href="#i-book"/></svg></span>
           <div class="activity__body">
             <h3 class="activity__title">Curious Cardinals tutor</h3>
             <p class="activity__desc">
-              I mentor younger students one-on-one through Curious Cardinals, from
-              schoolwork to passion projects.
+              I mentor younger students through schoolwork and passion projects.
             </p>
           </div>
-        </article>
-      </div>
+        </li>
+
+        <li class="activity">
+          <span class="activity__icon" aria-hidden="true"><svg class="icon"><use href="#i-flag"/></svg></span>
+          <div class="activity__body">
+            <h3 class="activity__title">UPenn Ski Club</h3>
+            <p class="activity__desc">I compete in snowboard slalom and freestyle.</p>
+          </div>
+        </li>
+      </ul>
     </section>
 
     <!-- ============ SECTION 7: HOBBIES (compact) ============ -->
@@ -445,11 +453,11 @@
       <a href="https://www.linkedin.com/in/marco-opertti" target="_blank" rel="noopener" aria-label="LinkedIn">
         <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>
       </a>
-      <a href="mailto:opertti@sas.upenn.edu" aria-label="Email">
+      <a href="mailto:marcoopertti@gmail.com" aria-label="Email Marco">
         <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
       </a>
     </nav>
-    <p class="footer__note">Built with vanilla JS. No frameworks were harmed.</p>
+    <p class="footer__note">Made by Marco.</p>
   </footer>
 
   <!-- ============ DESIGN MINOR EASTER EGG ============ -->
@@ -460,24 +468,25 @@
         <span class="terminal__dot terminal__dot--red" aria-hidden="true"></span>
         <span class="terminal__dot terminal__dot--yellow" aria-hidden="true"></span>
         <span class="terminal__dot terminal__dot--green" aria-hidden="true"></span>
-        <span class="modal__title" id="design-modal-title">~/design-minor</span>
+        <span class="modal__title" id="design-modal-title">~/design-portfolio</span>
         <button class="icon-btn modal__close" type="button" data-close-modal aria-label="Close design projects">
           <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
         </button>
       </div>
       <div class="modal__body">
-        <p class="modal__intro">You found it. The design minor is not just Figma: I like making physical things too.</p>
+        <p class="modal__intro">Design work from class and beyond.</p>
         <div class="design-grid">
           <figure class="design-item">
             <img src="assets/design/embroidered-jeans.jpg" alt="Marco wearing dark denim jeans with a hand-embroidered dragon patch on the back pocket" loading="lazy" width="768" height="1024" />
-            <figcaption>01 &middot; Embroidered jeans. Hand-stitched dragon patch on raw denim.</figcaption>
+            <figcaption>01 &middot; Hand-embroidered denim.</figcaption>
           </figure>
           <figure class="design-item">
             <video src="assets/design/dada-composite.mp4" muted loop playsinline controls preload="metadata" aria-label="Dada composite video collage"></video>
-            <figcaption>02 &middot; Dada composite. A short video collage in the Dada tradition.</figcaption>
+            <figcaption>02 &middot; Dada video collage.</figcaption>
           </figure>
-          <figure class="design-item design-item--soon" aria-hidden="true">
-            <div class="design-item__ph">many more to come<span class="design-item__cursor"></span></div>
+          <figure class="design-item">
+            <img src="assets/design/capi-system.png" alt="Exploded product diagram of the Capí insulated maté bottle" loading="lazy" width="1056" height="1582" />
+            <figcaption>03 &middot; Capí insulated maté bottle.</figcaption>
           </figure>
         </div>
       </div>
@@ -499,16 +508,12 @@
         </button>
       </div>
       <div class="modal__body">
-        <img class="hobby-photo" id="hobby-photo" src="" alt="" hidden />
-        <div class="hobby-fallback" id="hobby-fallback" hidden>photos coming soon<span class="design-item__cursor"></span></div>
+        <img class="hobby-photo" id="hobby-photo" alt="" hidden />
+        <div class="hobby-fallback" id="hobby-fallback" hidden>photos coming soon</div>
       </div>
     </div>
   </div>
 
-  <!-- Toast for copy-to-clipboard feedback -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <script src="portrait.js?v=2" defer></script>
   <script src="script.js?v=2" defer></script>
 </body>
 </html>

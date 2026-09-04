@@ -1,28 +1,22 @@
 /* ============================================================
-   Marco Opertti — portfolio behavior
+   Marco Opertti portfolio behavior
    Vanilla JS, no dependencies. Features:
-     - theme toggle (in-memory, no localStorage)
      - interactive terminal: typed input, history, tab-cycle,
-       ghost autocomplete, blinking cursor, clickable chips,
-       deep-links, neofetch card, copy-email, matrix, more
-     - hero typewriter tagline
-     - scroll progress bar + cursor-follow glow
-     - copy-to-clipboard with toast
+       ghost autocomplete, clickable chips, and deep-links
      - mobile nav menu
      - scroll-spy nav + staggered scroll reveal
-     - project spotlight that follows the cursor
    ============================================================ */
 
 (function () {
   "use strict";
 
-  var root = document.documentElement;
   var body = document.body;
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   var RESUME_URL =
     "https://github.com/Marcomercader/resume/raw/main/Marco%20Opertti%20Resume%202026.pdf";
-  var EMAIL = "opertti@sas.upenn.edu";
+  var EMAIL = "marcoopertti@gmail.com";
+  var PHONE = "202-320-3802";
 
   /* ==========================================================
      MOBILE NAV MENU
@@ -47,100 +41,79 @@
   });
 
   /* ==========================================================
-     TOAST + CLIPBOARD
+     SECTION ACCORDION
      ========================================================== */
-  var toast = document.getElementById("toast");
-  var toastTimer;
+  var accordionSections = document.querySelectorAll("main > .section");
 
-  function showToast(msg) {
-    toast.innerHTML =
-      '<svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span></span>';
-    toast.querySelector("span").textContent = msg;
-    toast.classList.add("is-visible");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () {
-      toast.classList.remove("is-visible");
-    }, 2600);
-  }
-
-  function fallbackCopy(text) {
-    try {
-      var ta = document.createElement("textarea");
-      ta.value = text;
-      ta.style.position = "fixed";
-      ta.style.opacity = "0";
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
-      showToast("email copied: " + text);
-    } catch (e) {
-      showToast("email: " + text);
-    }
-  }
-
-  function copyEmail() {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(EMAIL).then(
-        function () { showToast("email copied: " + EMAIL); },
-        function () { fallbackCopy(EMAIL); }
-      );
-    } else {
-      fallbackCopy(EMAIL);
-    }
-  }
-
-  var copyBtn = document.getElementById("copy-email-btn");
-  if (copyBtn) copyBtn.addEventListener("click", copyEmail);
-
-  /* ==========================================================
-     HERO TYPEWRITER TAGLINE
-     ========================================================== */
-  var taglineEl = document.getElementById("hero-tagline");
-  var PHRASES = [
-    "CS @ Penn. I like building things people actually use.",
-    "From Washington DC and Montevideo, Uruguay.",
-    "Currently building LHF, a native assignment tracker.",
-  ];
-
-  if (taglineEl) {
-    if (reduceMotion) {
-      taglineEl.textContent = PHRASES[0];
-    } else {
-      var typeText = document.createElement("span");
-      var typeCursor = document.createElement("span");
-      typeCursor.className = "type-cursor";
-      taglineEl.appendChild(typeText);
-      taglineEl.appendChild(typeCursor);
-
-      var pIndex = 0;
-      var cIndex = 0;
-      var deleting = false;
-
-      (function typeTick() {
-        var phrase = PHRASES[pIndex];
-        typeText.textContent = phrase.slice(0, cIndex);
-        var delay;
-        if (!deleting) {
-          if (cIndex < phrase.length) {
-            cIndex++;
-            delay = 42 + Math.random() * 45;
-          } else {
-            deleting = true;
-            delay = 1900;
-          }
-        } else {
-          if (cIndex > 0) {
-            cIndex--;
-            delay = 22;
-          } else {
-            deleting = false;
-            pIndex = (pIndex + 1) % PHRASES.length;
-            delay = 320;
-          }
+  function setAccordion(section, open) {
+    if (!section || !section.classList.contains("accordion")) return;
+    if (open) {
+      Array.prototype.forEach.call(accordionSections, function (otherSection) {
+        if (otherSection !== section && otherSection.classList.contains("is-open")) {
+          setAccordion(otherSection, false);
         }
-        setTimeout(typeTick, delay);
-      })();
+      });
+    }
+    var trigger = section.querySelector(".accordion__trigger");
+    var content = section.querySelector(".accordion__content");
+    if (!trigger || !content) return;
+    trigger.setAttribute("aria-expanded", open ? "true" : "false");
+    content.setAttribute("aria-hidden", open ? "false" : "true");
+    content.inert = !open;
+    section.classList.toggle("is-open", open);
+  }
+
+  Array.prototype.forEach.call(accordionSections, function (section) {
+    var title = section.querySelector(":scope > .section__title");
+    if (!title) return;
+
+    var trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.className = "accordion__trigger";
+    trigger.setAttribute("aria-expanded", "false");
+    trigger.setAttribute("aria-controls", section.id + "-content");
+    trigger.innerHTML = '<span class="accordion__title">' + title.textContent + '</span><span class="accordion__mark" aria-hidden="true"></span>';
+
+    var content = document.createElement("div");
+    content.className = "accordion__content";
+    content.id = section.id + "-content";
+    content.setAttribute("aria-hidden", "true");
+    content.inert = true;
+
+    var inner = document.createElement("div");
+    inner.className = "accordion__inner";
+
+    while (title.nextSibling) inner.appendChild(title.nextSibling);
+    content.appendChild(inner);
+    title.replaceWith(trigger);
+    section.appendChild(content);
+    section.classList.add("accordion");
+
+    trigger.addEventListener("click", function () {
+      setAccordion(section, trigger.getAttribute("aria-expanded") !== "true");
+    });
+  });
+
+  navLinksEl.addEventListener("click", function (e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (!link) return;
+    var target = document.querySelector(link.getAttribute("href"));
+    if (!target || !target.classList.contains("accordion")) return;
+    e.preventDefault();
+    setAccordion(target, true);
+    setTimeout(function () {
+      target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    }, reduceMotion ? 0 : 430);
+  });
+
+  if (window.location.hash && window.location.hash !== "#hero") {
+    var initialTarget = document.querySelector(window.location.hash);
+    var initialSection = initialTarget && (initialTarget.classList.contains("accordion") ? initialTarget : initialTarget.closest(".accordion"));
+    if (initialSection) {
+      setAccordion(initialSection, true);
+      setTimeout(function () {
+        initialTarget.scrollIntoView({ behavior: "auto", block: "start" });
+      }, 0);
     }
   }
 
@@ -197,7 +170,12 @@
 
   function scrollToTarget(id) {
     var el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    if (!el) return;
+    var section = el.classList.contains("accordion") ? el : el.closest(".accordion");
+    if (section) setAccordion(section, true);
+    setTimeout(function () {
+      el.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+    }, reduceMotion ? 0 : 430);
   }
 
   /* ---------- neofetch card ---------- */
@@ -206,10 +184,9 @@
     [" |  \\/  |/ _ \\ ", "---------------------------------"],
     [" | |\\/| | | | |", "role:   CS @ Penn, class of 2028"],
     [" | |  | | |_| |", "from:   Washington DC / Montevideo, UY"],
-    [" |_|  |_|\\___/ ", "langs:  Swift, TypeScript, Java, Python"],
+    [" |_|  |_|\\___/ ", "code:   Swift, TypeScript, Java, Python"],
     ["               ", "now:    building LHF, an assignment tracker"],
-    ["               ", "off:    club soccer captain, festivals"],
-    ["               ", "shell:  practical-first, ships things"],
+    ["               ", "off:    football, cooking, travel"],
   ];
   function neofetch() {
     return NEOFETCH.map(function (row) {
@@ -234,14 +211,13 @@
         { text: "  skills      languages and tools" },
         { text: "  languages   spoken languages" },
         { text: "  contact     how to reach me" },
-        { text: "  email       copy my email to clipboard" },
+        { text: "  email       show contact details" },
         { text: "  open <x>    jump to a project or section" },
         { text: "  ls          browse the site like a directory" },
         { text: "  date        today's date" },
         { text: "  history     commands you have run" },
         { text: "  clear       clear the screen" },
         { text: "" },
-        { text: "  hidden gems: despacito, soccer, coffee, matrix, sudo hire-me", variant: "muted" },
         { text: "tip: press Tab to cycle completions, up/down for history.", variant: "muted" },
       ];
     },
@@ -249,10 +225,9 @@
     whoami: function () {
       var bullet = '<span class="term-bullet">▸</span>';
       return [
-        { html: bullet + "I'm Marco, a CS student at Penn, originally from Montevideo, Uruguay and now based in Washington DC." },
-        { html: bullet + "I like taking an idea and building it into something people actually use." },
-        { html: bullet + "Right now I'm working on LHF, an assignment tracker that keeps college students from missing deadlines." },
-        { html: bullet + "Outside of code I play a lot of sports (club soccer captain, ski team, and currently learning to kitesurf), plus cooking and traveling." },
+        { html: bullet + "Computer Science at Penn." },
+        { html: bullet + "Building LHF, Monk, and smaller projects." },
+        { html: bullet + "Interested in product design and useful software." },
       ];
     },
 
@@ -260,9 +235,9 @@
 
     projects: function () {
       return [
-        { html: '<span class="term-link" data-target="project-lhf">LHF</span>             native assignment tracker for students (Swift, SwiftUI)' },
-        { html: '<span class="term-link" data-target="project-monk">Monk</span>            productivity + meditation app (TypeScript, Next.js)' },
-        { html: '<span class="term-link" data-target="project-geoguessr">Penn GeoGuessr</span>  campus location game, 50+ spots, hand-written w/o AI (Java)' },
+        { html: '<span class="term-link" data-target="project-lhf">LHF</span>             assignment tracker for students (Swift, SwiftUI)' },
+        { html: '<span class="term-link" data-target="project-monk">Monk</span>            focus and meditation app (TypeScript, Next.js)' },
+        { html: '<span class="term-link" data-target="project-geoguessr">Penn GeoGuessr</span>  campus location game, built solo (Java)' },
         { text: "tip: click a name, or run `open <name>` to jump there.", variant: "muted" },
       ];
     },
@@ -282,7 +257,8 @@
 
     contact: function () {
       return [
-        { html: 'email:    <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>  <span class="terminal__line--muted">(run `email` to copy)</span>' },
+        { html: 'email:    <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>' },
+        { html: 'phone:    <a href="tel:+12023203802">' + PHONE + '</a>' },
         { html: 'github:   <a href="https://github.com/Marcomercader" target="_blank" rel="noopener">github.com/Marcomercader</a>' },
         { html: 'linkedin: <a href="https://www.linkedin.com/in/marco-opertti" target="_blank" rel="noopener">in/marco-opertti</a>' },
         { html: 'resume:   <a href="' + RESUME_URL + '" target="_blank" rel="noopener">Marco Opertti Resume 2026 (PDF)</a>' },
@@ -290,8 +266,10 @@
     },
 
     email: function () {
-      copyEmail();
-      return [{ text: EMAIL + " copied to clipboard.", variant: "accent" }];
+      return [
+        { html: '<a href="mailto:' + EMAIL + '">' + EMAIL + '</a>' },
+        { html: '<a href="tel:+12023203802">' + PHONE + '</a>' },
+      ];
     },
 
     ls: function () {
@@ -329,16 +307,6 @@
       return [{ text: "brewing... out of beans. running on caffeine and deadlines anyway.", variant: "accent" }];
     },
 
-    despacito: function () {
-      return [
-        {
-          text:
-            "I co-organize Penn's largest Latino cultural festival: 2,000+ attendees and $10,000+ raised for nonprofits across Latin America.",
-          variant: "accent",
-        },
-      ];
-    },
-
     soccer: function () {
       return [
         { text: "At 18 I founded and ran a youth soccer camp in DC for 50+ kids.", variant: "accent" },
@@ -357,19 +325,6 @@
   };
 
   /* ---------- commands with arguments / side effects ---------- */
-
-  function sudoHireMe() {
-    return [
-      { text: "Password: ********", variant: "muted" },
-      { text: "Permission granted. Excellent decision.", variant: "accent" },
-      {
-        html:
-          'Here is my resume: <a href="' +
-          RESUME_URL +
-          '" target="_blank" rel="noopener">Marco Opertti Resume 2026 (PDF)</a>',
-      },
-    ];
-  }
 
   function sudoOther(args) {
     var joined = args.join(" ");
@@ -437,7 +392,7 @@
 
   // Names offered to Tab-completion and the ghost hint.
   var COMMAND_NAMES = Object.keys(COMMANDS)
-    .concat(["sudo hire-me", "open", "echo", "matrix"])
+    .concat(["open", "echo", "matrix"])
     .sort();
 
   function renderLines(lines) {
@@ -463,7 +418,6 @@
     var name = parts[0].toLowerCase();
     var args = parts.slice(1);
 
-    if (lower === "sudo hire-me") return renderLines(sudoHireMe());
     if (name === "matrix") return runMatrix();
     if (name === "sudo") return renderLines(sudoOther(args));
     if (name === "echo") return renderLines([{ text: args.join(" ") }]);
@@ -584,63 +538,14 @@
     });
   });
 
-  /* ---------- global "/" shortcut: jump into the terminal ---------- */
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") { setMenu(false); return; }
-    if (e.key !== "/") return;
-    var tag = (e.target.tagName || "").toLowerCase();
-    if (tag === "input" || tag === "textarea") return;
-    e.preventDefault();
-    document.getElementById("terminal-section").scrollIntoView({
-      behavior: reduceMotion ? "auto" : "smooth",
-      block: "start",
-    });
-    input.focus({ preventScroll: true });
-  });
-
   /* ==========================================================
-     BOOT SEQUENCE: auto-type `whoami`, print bio + hint.
+     TERMINAL INTRO
      ========================================================== */
-  function typeCommand(text, done) {
-    var line = document.createElement("div");
-    line.className = "terminal__line terminal__line--cmd";
-    var prompt = document.createElement("span");
-    prompt.className = "term-prompt";
-    prompt.textContent = "marco@penn ~ %";
-    line.appendChild(prompt);
-    var typed = document.createTextNode("");
-    line.appendChild(typed);
-    output.appendChild(line);
-
-    var i = 0;
-    (function tick() {
-      if (i <= text.length) {
-        typed.textContent = text.slice(0, i);
-        i++;
-        setTimeout(tick, 70);
-      } else {
-        scrollToBottom();
-        done();
-      }
-    })();
-  }
-
   function finishBoot() {
     renderLines(COMMANDS.whoami());
-    printLine("");
-    printHTML(
-      "type <span class='terminal__line--accent'>help</span>, try <span class='terminal__line--accent'>neofetch</span>, or tap a chip below",
-      "muted"
-    );
-    input.focus({ preventScroll: true });
   }
 
-  if (reduceMotion) {
-    echoCommand("whoami");
-    finishBoot();
-  } else {
-    typeCommand("whoami", function () { setTimeout(finishBoot, 350); });
-  }
+  finishBoot();
 
   /* ==========================================================
      DESIGN MINOR EASTER EGG MODAL
@@ -730,61 +635,6 @@
   }
 
   /* ==========================================================
-     SCROLL PROGRESS BAR + CURSOR GLOW
-     ========================================================== */
-  var progressBar = document.getElementById("scroll-progress");
-  var scrollQueued = false;
-
-  function onScroll() {
-    scrollQueued = false;
-    var st = window.pageYOffset || root.scrollTop;
-    var h = root.scrollHeight - window.innerHeight;
-    if (progressBar) progressBar.style.setProperty("--progress", h > 0 ? st / h : 0);
-    if (st > window.innerHeight * 0.5) body.classList.add("is-scrolled");
-    else body.classList.remove("is-scrolled");
-  }
-  window.addEventListener(
-    "scroll",
-    function () {
-      if (!scrollQueued) {
-        scrollQueued = true;
-        requestAnimationFrame(onScroll);
-      }
-    },
-    { passive: true }
-  );
-  onScroll();
-
-  if (!reduceMotion && window.matchMedia("(pointer: fine)").matches) {
-    var glowQueued = false;
-    var lastX = 0, lastY = 0;
-    window.addEventListener("mousemove", function (e) {
-      lastX = e.clientX;
-      lastY = e.clientY;
-      if (!glowQueued) {
-        glowQueued = true;
-        requestAnimationFrame(function () {
-          glowQueued = false;
-          body.style.setProperty("--glow-x", lastX + "px");
-          body.style.setProperty("--glow-y", lastY + "px");
-        });
-      }
-    });
-  }
-
-  /* ==========================================================
-     PROJECT SPOTLIGHT: glow follows the cursor over each card.
-     ========================================================== */
-  var projectCards = document.querySelectorAll(".project");
-  Array.prototype.forEach.call(projectCards, function (card) {
-    card.addEventListener("mousemove", function (e) {
-      var r = card.getBoundingClientRect();
-      card.style.setProperty("--mx", ((e.clientX - r.left) / r.width) * 100 + "%");
-      card.style.setProperty("--my", ((e.clientY - r.top) / r.height) * 100 + "%");
-    });
-  });
-
-  /* ==========================================================
      SCROLL-SPY: highlight the nav link for the section in view.
      ========================================================== */
   var navLinks = document.querySelectorAll(".nav__links a");
@@ -811,27 +661,4 @@
     spyTargets.forEach(function (t) { spy.observe(t); });
   }
 
-  /* ==========================================================
-     SCROLL REVEAL: staggered fade for cards + timeline items.
-     Progressive enhancement: without JS/IO they stay visible.
-     ========================================================== */
-  var revealItems = document.querySelectorAll(".project, .timeline__item, .activity");
-  if (!reduceMotion && "IntersectionObserver" in window) {
-    Array.prototype.forEach.call(revealItems, function (el, i) {
-      el.style.setProperty("--reveal-delay", (i % 4) * 70 + "ms");
-      el.classList.add("reveal");
-    });
-    var revealObs = new IntersectionObserver(
-      function (entries, obs) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            obs.unobserve(entry.target);
-          }
-        });
-      },
-      { rootMargin: "0px 0px -10% 0px", threshold: 0.1 }
-    );
-    Array.prototype.forEach.call(revealItems, function (el) { revealObs.observe(el); });
-  }
 })();
