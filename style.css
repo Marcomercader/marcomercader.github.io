@@ -24,7 +24,6 @@
   --transition: 180ms ease;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --z-nav: 50;
   --z-menu: 60;
 }
 
@@ -146,7 +145,7 @@ main { display: block; }
 /* ---------- One-page accordion ---------- */
 .section.accordion {
   padding: 0 24px;
-  scroll-margin-top: 74px;
+  scroll-margin-top: 12px;
 }
 .accordion__trigger {
   width: 100%;
@@ -179,7 +178,7 @@ main { display: block; }
 .accordion.is-open .accordion__mark { transform: rotate(225deg) translate(-2px, 2px); }
 .accordion.is-open .accordion__trigger {
   position: sticky;
-  top: 61px;
+  top: 0;
   z-index: 20;
   background: color-mix(in srgb, var(--bg) 92%, transparent);
   backdrop-filter: blur(10px);
@@ -219,58 +218,6 @@ main { display: block; }
 }
 .accordion__trigger:hover .accordion__title { color: var(--accent-text); }
 
-/* ---------- Nav ---------- */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: var(--z-nav);
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 14px 24px;
-  max-width: 1100px;
-  margin: 0 auto;
-  backdrop-filter: saturate(180%) blur(12px);
-  -webkit-backdrop-filter: saturate(180%) blur(12px);
-  background: color-mix(in srgb, var(--bg) 78%, transparent);
-  border-bottom: 1px solid var(--border);
-}
-.nav__brand {
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: var(--text);
-  letter-spacing: -0.03em;
-}
-.nav__brand:hover { text-decoration: none; }
-.nav__brand .accent { transition: opacity var(--transition); }
-.nav__brand:hover .accent { opacity: 0.6; }
-
-.nav__links {
-  margin-left: auto;
-  display: flex;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-}
-.nav__links a {
-  color: var(--text-dim);
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  position: relative;
-  transition: color var(--transition), background var(--transition);
-}
-.nav__links a::before {
-  content: "";
-  color: var(--accent);
-  opacity: 0;
-  margin-right: 0;
-  transition: opacity var(--transition);
-}
-.nav__links a:hover { color: var(--accent-text); text-decoration: none; background: var(--accent-dim); }
-
-.nav__actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-.nav__links + .nav__actions { margin-left: 0; }
-
 .icon-btn {
   background: transparent;
   border: 1px solid var(--border);
@@ -287,42 +234,6 @@ main { display: block; }
 .icon-btn:hover { border-color: var(--accent); color: var(--accent-text); }
 .icon-btn:active { transform: scale(0.92); }
 .icon-btn .icon { width: 1.15rem; height: 1.15rem; }
-
-/* mobile menu button hidden on desktop */
-.nav__menu-btn { display: none; }
-.nav__menu-btn .icon-x { display: none; }
-
-@media (max-width: 620px) {
-  .nav__menu-btn { display: inline-flex; }
-  .nav__links {
-    position: absolute;
-    top: calc(100% + 8px);
-    right: 16px;
-    left: 16px;
-    margin: 0;
-    flex-direction: column;
-    gap: 4px;
-    padding: 10px;
-    background: var(--bg-elev);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    font-size: 0.95rem;
-    z-index: var(--z-menu);
-    opacity: 0;
-    transform: translateY(-8px);
-    pointer-events: none;
-    transition: opacity 180ms ease, transform 180ms var(--ease-out);
-  }
-  .nav.is-open .nav__links {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  .nav.is-open .nav__menu-btn .icon-menu { display: none; }
-  .nav.is-open .nav__menu-btn .icon-x { display: inline; }
-  .nav__links a { padding: 10px 12px; }
-}
 
 /* ---------- Buttons ---------- */
 .btn {
@@ -873,10 +784,6 @@ main { display: block; }
 .footer__links a:hover { color: var(--accent-text); border-color: var(--accent); text-decoration: none; transform: translateY(-2px); }
 .footer__links .icon { width: 1.2rem; height: 1.2rem; }
 .footer__note { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-dim); margin: 0; }
-
-/* ---------- Scroll-spy active nav link ---------- */
-.nav__links a.is-active { color: var(--accent-text); background: var(--accent-dim); }
-.nav__links a.is-active::before { content: "> "; opacity: 0.8; }
 
 /* ---------- Scroll reveal (subtle, reduced-motion safe) ---------- */
 .reveal {

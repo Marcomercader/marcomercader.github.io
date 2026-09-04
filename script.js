@@ -3,8 +3,6 @@
    Vanilla JS, no dependencies. Features:
      - interactive terminal: typed input, history, tab-cycle,
        ghost autocomplete, clickable chips, and deep-links
-     - mobile nav menu
-     - scroll-spy nav + staggered scroll reveal
    ============================================================ */
 
 (function () {
@@ -17,28 +15,6 @@
     "https://github.com/Marcomercader/resume/raw/main/Marco%20Opertti%20Resume%202026.pdf";
   var EMAIL = "marcoopertti@gmail.com";
   var PHONE = "202-320-3802";
-
-  /* ==========================================================
-     MOBILE NAV MENU
-     ========================================================== */
-  var nav = document.getElementById("nav");
-  var menuBtn = document.getElementById("nav-menu-btn");
-  var navLinksEl = document.getElementById("nav-links");
-
-  function setMenu(open) {
-    nav.classList.toggle("is-open", open);
-    menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
-    menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-  }
-  menuBtn.addEventListener("click", function () {
-    setMenu(!nav.classList.contains("is-open"));
-  });
-  navLinksEl.addEventListener("click", function (e) {
-    if (e.target.tagName === "A") setMenu(false);
-  });
-  document.addEventListener("click", function (e) {
-    if (nav.classList.contains("is-open") && !nav.contains(e.target)) setMenu(false);
-  });
 
   /* ==========================================================
      SECTION ACCORDION
@@ -92,18 +68,6 @@
     trigger.addEventListener("click", function () {
       setAccordion(section, trigger.getAttribute("aria-expanded") !== "true");
     });
-  });
-
-  navLinksEl.addEventListener("click", function (e) {
-    var link = e.target.closest('a[href^="#"]');
-    if (!link) return;
-    var target = document.querySelector(link.getAttribute("href"));
-    if (!target || !target.classList.contains("accordion")) return;
-    e.preventDefault();
-    setAccordion(target, true);
-    setTimeout(function () {
-      target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-    }, reduceMotion ? 0 : 430);
   });
 
   if (window.location.hash && window.location.hash !== "#hero") {
@@ -632,33 +596,6 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && !hobbyModal.hidden) closeHobbyModal();
     });
-  }
-
-  /* ==========================================================
-     SCROLL-SPY: highlight the nav link for the section in view.
-     ========================================================== */
-  var navLinks = document.querySelectorAll(".nav__links a");
-  var linkFor = {};
-  Array.prototype.forEach.call(navLinks, function (a) {
-    linkFor[a.getAttribute("href").slice(1)] = a;
-  });
-  var spyTargets = ["terminal-section", "projects", "experience", "coursework", "activities"]
-    .map(function (id) { return document.getElementById(id); })
-    .filter(Boolean);
-
-  if ("IntersectionObserver" in window) {
-    var spy = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          Array.prototype.forEach.call(navLinks, function (a) { a.classList.remove("is-active"); });
-          var active = linkFor[entry.target.id];
-          if (active) active.classList.add("is-active");
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
-    );
-    spyTargets.forEach(function (t) { spy.observe(t); });
   }
 
 })();
