@@ -880,14 +880,14 @@ main { display: block; }
   font-family: var(--font-mono);
   font-size: 0.82rem;
 }
-button.minor-chip {
+button.minor-chip, a.minor-chip--link {
   cursor: pointer;
   border-color: var(--accent);
   color: var(--accent-text);
   transition: background var(--transition), transform var(--transition);
 }
-button.minor-chip:hover { background: var(--accent-dim); transform: translateY(-1px); }
-button.minor-chip .icon { width: 0.9em; height: 0.9em; }
+button.minor-chip:hover, a.minor-chip--link:hover { text-decoration: none; background: var(--accent-dim); transform: translateY(-1px); }
+button.minor-chip .icon, a.minor-chip--link .icon { width: 0.9em; height: 0.9em; }
 
 /* ---------- Modal (design minor easter egg) ---------- */
 .modal { position: fixed; inset: 0; z-index: var(--z-menu); }

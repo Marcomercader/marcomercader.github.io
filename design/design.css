@@ -1,0 +1,146 @@
+/* ============================================================
+   Design portfolio page. Builds on ../style.css tokens.
+   ============================================================ */
+
+main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+/* ---------- Header ---------- */
+.d-head { padding: 56px 0 40px; border-bottom: 1px solid var(--border); }
+.d-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  margin-bottom: 28px;
+}
+.d-back:hover { color: var(--accent-text); text-decoration: none; }
+.hero__name + .d-index { margin-top: 26px; }
+
+.d-index {
+  list-style: none;
+  counter-reset: idx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+.d-index li { counter-increment: idx; }
+.d-index li::before { content: "0" counter(idx) " "; color: var(--accent); }
+.d-index a { color: var(--text-dim); }
+.d-index a:hover { color: var(--accent-text); }
+
+/* ---------- Work entries ---------- */
+.work {
+  padding: 64px 0;
+  border-bottom: 1px solid var(--border);
+  scroll-margin-top: 24px;
+}
+.work__meta {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.work__num { font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-text); }
+.work__title { font-size: 1.5rem; margin: 0; }
+.work__kind {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-dim);
+  text-align: right;
+  white-space: nowrap;
+}
+.work__desc {
+  color: var(--text-dim);
+  max-width: 58ch;
+  margin: 0 0 26px 52px;
+  font-size: 0.98rem;
+}
+.work__media { display: flex; flex-direction: column; gap: 18px; }
+.work__media--pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.work__links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+
+.pill {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 8px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent-text);
+  font-size: 0.68rem;
+}
+
+/* ---------- Media frames ---------- */
+.frame { margin: 0; }
+.frame img,
+.frame video,
+.frame .ph {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--bg-elev);
+}
+.frame figcaption {
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+.frame--paper img { background: #f7f5ef; }
+.frame--narrow { max-width: 420px; }
+.work__media--pair .frame img,
+.work__media--pair .frame .ph { aspect-ratio: 2 / 3; object-fit: contain; }
+
+.ph {
+  aspect-ratio: 16 / 9;
+  display: grid !important;
+  place-items: center;
+  border-style: dashed !important;
+  border-color: var(--border-strong) !important;
+  background: transparent !important;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+
+/* ---------- Footer ---------- */
+.d-foot {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 36px 0 64px;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+}
+.d-foot a { color: var(--text-dim); }
+.d-foot a:hover { color: var(--accent-text); }
+
+@media (max-width: 620px) {
+  .work { padding: 48px 0; }
+  .work__meta { grid-template-columns: 32px 1fr; }
+  .work__kind { grid-column: 2; text-align: left; white-space: normal; }
+  .work__desc { margin-left: 0; }
+  .work__media--pair { grid-template-columns: 1fr; }
+}
+
+/* photo fills its frame instead of letterboxing */
+.work__media--pair .frame--cover img { object-fit: cover; }
+
+/* landscape photo + portrait poster, matched heights */
+.work__media--poster { grid-template-columns: 4fr 2.25fr; align-items: start; }
+.work__media--poster .frame img { aspect-ratio: auto; }
+@media (max-width: 620px) { .work__media--poster { grid-template-columns: 1fr; } }
+
+.work__media--square .frame img { aspect-ratio: 1 / 1; object-fit: cover; }
+.work__media--square .frame--cream img { object-fit: contain; background: #fdf3e7; }
+
+.work__meta + .work__media { margin-top: 22px; }
