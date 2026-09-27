@@ -145,17 +145,26 @@ main { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
 .work__meta + .work__media { margin-top: 22px; }
 
-/* LHF -> Smooth, Monk on its own row */
-.work__media--trio {
+/* LHF -> Smooth, then Monk; each row keeps its own links */
+.work__meta + .app-row { margin-top: 22px; }
+.app-row + .app-row { margin-top: 36px; }
+.app-row__media {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 220px auto 220px;
+  justify-content: start;
   align-items: start;
   gap: 14px;
 }
+.app-row__media .frame img { aspect-ratio: 1 / 1; object-fit: cover; }
+.app-row__media .frame--cream img { object-fit: contain; background: #fdf3e7; }
+.app-row .work__links { margin-top: 14px; }
 .trio__arrow {
   align-self: center;
   margin-bottom: 26px;
   font-family: var(--font-mono);
   color: var(--accent-text);
 }
-.work__media--trio .frame:last-child { grid-column: 1; margin-top: 8px; }
+@media (max-width: 620px) {
+  .app-row__media { grid-template-columns: 1fr auto 1fr; }
+  .app-row:last-child .app-row__media { grid-template-columns: 1fr; max-width: 60%; }
+}
