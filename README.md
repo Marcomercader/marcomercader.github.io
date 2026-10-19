@@ -1,52 +1,24 @@
-# marcomercader.github.io
+# Marco Opertti
 
-My personal portfolio. A single static page built with plain HTML, CSS, and vanilla JS. No build step, no frameworks.
+Personal website and design portfolio. Plain HTML, CSS, and JavaScript; no build step.
 
-## Structure
+## Files
 
-```
-index.html    markup and content
-style.css     theming (dark default + light) and layout
-script.js     theme toggle + interactive terminal
-assets/       screenshots, GIFs, and an optional OG image
-README.md     this file
-```
+- `index.html`: bio, Smooth, experience, education, activities, and hobbies.
+- `style.css`: shared white-background typography and layout. Local Roobert headings and Inter body type.
+- `script.js`: portrait animation and accessible hobby photo dialogs.
+- `design/`: design portfolio, with its original project media.
+- `assets/Marco_Resume.pdf`: current resume served by the header link.
+- `assets/fonts/`: locally served fonts.
 
-## Run locally
+## Preview
 
-It is just static files, so open `index.html` directly, or serve it:
+Run `python3 -m http.server 8777 --bind 127.0.0.1`, then visit `http://127.0.0.1:8777/` or `/design/`.
 
-```bash
-# any one of these
-python3 -m http.server 8000
-npx serve .
-```
+## Deployment
 
-Then visit `http://localhost:8000`.
+GitHub Pages serves the repository's main branch at `https://marcoopertti.com`. Pushing to main publishes changes.
 
-## Deploy to GitHub Pages
+## Design
 
-This repo is named `marcomercader.github.io`, so GitHub serves it as a user site at `https://marcomercader.github.io` straight from the default branch. No Actions or build required.
-
-1. Create a repo on GitHub named exactly **`marcomercader.github.io`**.
-2. Push this folder to it:
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial portfolio"
-   git branch -M main
-   git remote add origin https://github.com/Marcomercader/marcomercader.github.io.git
-   git push -u origin main
-   ```
-3. In the repo: **Settings → Pages → Build and deployment**. Set **Source** to *Deploy from a branch*, branch **main**, folder **/ (root)**. Save.
-4. Wait a minute, then open `https://marcomercader.github.io`.
-
-Every push to `main` republishes automatically.
-
-## Things to fill in later
-
-Search the code for `TODO` and the placeholder slots:
-
-- **Project links** in `index.html`: LHF repo, Monk demo + repo, Penn GeoGuessr repo (all currently `href="#"`).
-- **Media**: drop screenshots / a gameplay GIF into `assets/` and replace the `.project__media` placeholder divs with `<img>` tags.
-- **OG image** (optional): add `assets/og-image.png` (1200x630) and uncomment the `og:image` meta tag in `<head>` for a richer link preview.
+Keep content visible in one continuous document with small headings. No accordions, terminal, cards, badges, or progress bar. Links are plain and underlined. The portrait asterisk triggers a passing pixelation wave and respects reduced motion. Hobby photos open in a native dialog with Escape dismissal and focus restoration. Portfolio media retains its original colors.

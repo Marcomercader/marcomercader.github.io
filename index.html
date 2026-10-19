@@ -7,15 +7,15 @@
   <title>Marco Opertti</title>
   <meta name="description" content="Marco Opertti studies computer science at Penn and builds useful software." />
   <meta name="author" content="Marco Opertti" />
-  <meta name="theme-color" content="#f7fbff" />
+  <meta name="theme-color" content="#ffffff" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Marco Opertti" />
   <meta property="og:description" content="Computer science, design, and projects by Marco Opertti." />
-  <meta property="og:url" content="https://marcomercader.github.io" />
+  <meta property="og:url" content="https://marcoopertti.com" />
   <!-- Drop an assets/og-image.png (1200x630) here and uncomment to enable a rich preview -->
-  <!-- <meta property="og:image" content="https://marcomercader.github.io/assets/og-image.png" /> -->
+  <!-- <meta property="og:image" content="https://marcoopertti.com/assets/og-image.png" /> -->
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary" />
@@ -24,457 +24,103 @@
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%E2%8C%98</text></svg>" />
 
-  <!-- Classic serif with a practical typewriter face for the terminal -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500;6..96,600&family=Courier+Prime:wght@400;700&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="style.css?v=2" />
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
 <body>
-  <a class="skip-link" href="#terminal-section">Skip to content</a>
-
-  <!-- Scroll progress bar -->
-  <!-- ============ SVG ICON SPRITE (referenced with <use>) ============ -->
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 .5C5.37.5 0 5.87 0 12.5c0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.29-.01-1.04-.02-2.05-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.21.09 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.95 0-1.31.47-2.39 1.24-3.23-.12-.3-.54-1.53.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 016 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.77.84 1.24 1.92 1.24 3.23 0 4.62-2.81 5.64-5.49 5.94.43.37.81 1.1.81 2.22 0 1.6-.01 2.9-.01 3.29 0 .32.22.7.83.58C20.56 22.29 24 17.8 24 12.5 24 5.87 18.63.5 12 .5z"/>
-    </symbol>
-    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.13 2.06 2.06 0 010 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
-    </symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-    </symbol>
-    <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/>
-    </symbol>
-    <symbol id="i-location" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>
-    </symbol>
-    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M7 17 17 7"/><path d="M7 7h10v10"/>
-    </symbol>
-    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M18 6 6 18M6 6l12 12"/>
-    </symbol>
-    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M20 6 9 17l-5-5"/>
-    </symbol>
-    <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 3 10.1 8.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"/><path d="M5 3v4M3 5h4M19 17v4M17 19h4"/>
-    </symbol>
-    <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/>
-    </symbol>
-    <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/>
-    </symbol>
-    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-    </symbol>
-    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>
-    </symbol>
-  </svg>
-
+  <a class="skip-link" href="#about">Skip to content</a>
   <main>
-    <!-- ============ SECTION 1: HERO ============ -->
-    <section id="hero" class="hero">
+    <header class="hero" id="hero">
       <div class="hero__intro">
-        <div class="hero__name-row">
-          <h1 class="hero__name">Marco Opertti<span class="hero__asterisk" aria-hidden="true">*</span></h1>
-        </div>
-
-        <div class="hero__links">
-          <a class="btn" href="https://github.com/Marcomercader" target="_blank" rel="noopener" aria-label="GitHub profile">
-            <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub
-          </a>
-          <a class="btn" href="https://www.linkedin.com/in/marco-opertti" target="_blank" rel="noopener" aria-label="LinkedIn profile">
-            <svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg> LinkedIn
-          </a>
-          <span class="contact-wrap">
-            <button class="btn" type="button" aria-describedby="contact-note">
-              <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg> Contact
-            </button>
-            <span class="contact-note" id="contact-note" role="tooltip">
-              <a href="mailto:marcoopertti@gmail.com">marcoopertti@gmail.com</a>
-              <a href="tel:+12023203802">202-320-3802</a>
-            </span>
-          </span>
-          <a class="btn btn--accent" href="https://github.com/Marcomercader/resume/raw/main/Marco%20Opertti%20Resume%202026.pdf" target="_blank" rel="noopener" aria-label="Download resume PDF">
-            <svg class="icon" aria-hidden="true"><use href="#i-download"/></svg> Resume
-          </a>
-          <span class="location-wrap">
-            <button class="btn location-tag" type="button" aria-label="Location" aria-describedby="location-note">
-              <svg class="icon" aria-hidden="true"><use href="#i-location"/></svg>
-            </button>
-            <span class="location-note" id="location-note" role="tooltip">Grew up in DC, originally from Uruguay, now based in Philly.</span>
-          </span>
-        </div>
-
+        <h1>Marco Opertti<button class="asterisk" type="button" aria-label="Animate my portrait" aria-controls="portrait">*</button></h1>
+        <nav class="links" aria-label="Personal links">
+          <a href="https://github.com/Marcomercader" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/marco-opertti" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="mailto:marcoopertti@gmail.com">Contact</a>
+          <a href="assets/Marco_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <a href="design/">Design Portfolio</a>
+        </nav>
       </div>
-
-      <div class="hero__portrait" aria-hidden="true">
-        <div class="hero__portrait-frame">
-          <img class="hero__portrait-photo" src="assets/marco-headshot.png" alt="" width="1122" height="1402" />
-        </div>
+      <div class="portrait" id="portrait">
+        <img src="assets/marco-headshot.png" alt="Marco Opertti" width="1122" height="1402" />
+        <canvas class="portrait__wave" aria-hidden="true" hidden></canvas>
       </div>
-    </section>
+    </header>
 
-    <!-- ============ SECTION 2: TERMINAL / ABOUT ============ -->
-    <section id="terminal-section" class="section">
-      <h2 class="section__title">who am i</h2>
-
-      <div class="terminal" id="terminal">
-        <div class="terminal__bar">
-          <span class="terminal__dot terminal__dot--red" aria-hidden="true"></span>
-          <span class="terminal__dot terminal__dot--yellow" aria-hidden="true"></span>
-          <span class="terminal__dot terminal__dot--green" aria-hidden="true"></span>
-          <span class="terminal__title">marco@penn ~ %</span>
-        </div>
-
-        <!-- Output area. Screen-reader announces new lines politely. -->
-        <div class="terminal__body" id="terminal-output" role="log" aria-live="polite" aria-label="Terminal output"></div>
-
-        <!-- Live input line. The real <input> is transparent and sits on top of
-             a rendered mirror so we can draw a blinking cursor + ghost autocomplete. -->
-        <form class="terminal__input-line" id="terminal-form" autocomplete="off">
-          <label class="terminal__prompt" for="terminal-input">marco@penn ~ %</label>
-          <span class="terminal__field" id="terminal-field">
-            <span class="terminal__render" aria-hidden="true"><span id="term-typed"></span><span class="terminal__cursor"></span><span id="term-ghost" class="terminal__ghost"></span></span>
-            <input
-              id="terminal-input"
-              class="terminal__input"
-              type="text"
-              name="command"
-              aria-label="Terminal command input, type help then Enter. Press Tab to autocomplete."
-              autocomplete="off"
-              autocapitalize="off"
-              autocorrect="off"
-              spellcheck="false"
-            />
-          </span>
-        </form>
-      </div>
-
-      <!-- Clickable shortcuts: run a command without typing it. -->
-      <div class="cmd-chips" role="group" aria-label="Try a command">
-        <span class="cmd-chips__label" aria-hidden="true">try:</span>
-        <button class="chip" type="button" data-cmd="help">help</button>
-        <button class="chip" type="button" data-cmd="neofetch">neofetch</button>
-        <button class="chip" type="button" data-cmd="projects">projects</button>
-        <button class="chip" type="button" data-cmd="skills">skills</button>
-      </div>
-    </section>
-
-    <!-- ============ SECTION 3: PROJECTS ============ -->
-    <section id="projects" class="section">
-      <h2 class="section__title">projects</h2>
-
-      <div class="projects">
-        <!-- Project 1: LHF -->
-        <article class="project" id="project-lhf">
-          <div class="project__media project__media--fit project__media--fit-cream">
-            <img src="assets/covers/lhf.jpg" alt="Low Hanging Fruit cover art: an illustrated persimmon hanging from a branch" loading="lazy" width="886" height="886" />
-          </div>
-          <div class="project__content">
-            <h3 class="project__title">LHF</h3>
-            <ul class="tags" aria-label="Tech stack">
-              <li>Swift</li><li>SwiftUI</li><li>iOS / macOS</li>
-            </ul>
-            <p class="project__desc">
-              An assignment tracker that pulls deadlines from Canvas and Gradescope.
-              I lead the product design and interface. Available on the App Store.
-            </p>
-            <div class="project__links">
-              <a class="btn btn--sm btn--accent" href="https://apps.apple.com/us/app/low-hanging-fruit/id6783911002" target="_blank" rel="noopener" aria-label="Low Hanging Fruit on the App Store">
-                <svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"/></svg> App Store
-              </a>
-              <!-- TODO: fill in real repo URL -->
-              <a class="btn btn--sm" href="#" aria-label="LHF GitHub repository">
-                <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2: Monk -->
-        <article class="project" id="project-monk">
-          <div class="project__media project__media--wide">
-            <img src="assets/covers/monk.png" alt="Monk home screen with a meditating monk illustration" loading="lazy" width="1318" height="1200" />
-          </div>
-          <div class="project__content">
-            <h3 class="project__title">Monk</h3>
-            <ul class="tags" aria-label="Tech stack">
-              <li>TypeScript</li><li>Next.js</li><li>Supabase</li><li>Claude API</li>
-            </ul>
-            <p class="project__desc">
-              A simple space for habits and guided meditation.
-            </p>
-            <div class="project__links">
-              <!-- TODO: fill in real repo URL -->
-              <a class="btn btn--sm" href="https://monkapp.vercel.app/onboarding" target="_blank" rel="noopener" aria-label="Monk live demo">
-                <svg class="icon icon-arrow" aria-hidden="true"><use href="#i-arrow"/></svg> Live demo
-              </a>
-              <a class="btn btn--sm" href="#" aria-label="Monk GitHub repository">
-                <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3: Penn GeoGuessr -->
-        <article class="project" id="project-geoguessr">
-          <div class="project__media project__media--fit">
-            <img src="assets/covers/penn-geoguessr.jpg" alt="The LOVE statue on Penn's campus" loading="lazy" width="750" height="796" />
-          </div>
-          <div class="project__content">
-            <h3 class="project__title">Penn GeoGuessr</h3>
-            <ul class="tags" aria-label="Tech stack">
-              <li>Java</li><li class="tags__flag">100% hand-written, no AI</li>
-            </ul>
-            <p class="project__desc">
-              A campus guessing game with 50+ Penn locations, distance scoring,
-              a hard mode, and saved high scores. Built solo without AI.
-            </p>
-            <div class="project__links">
-              <a class="btn btn--sm" href="https://github.com/Marcomercader/PennGeoguessr" target="_blank" rel="noopener" aria-label="Penn GeoGuessr GitHub repository">
-                <svg class="icon" aria-hidden="true"><use href="#i-github"/></svg> GitHub
-              </a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============ SECTION 4: EXPERIENCE ============ -->
-    <section id="experience" class="section">
-      <h2 class="section__title">experience</h2>
-
-      <ol class="timeline">
-        <li class="timeline__item">
-          <span class="timeline__when">2026</span>
-          <div class="timeline__what">
-            <strong>LightFeather</strong> &middot; Software Engineer Intern
-            <span class="timeline__where">Washington DC</span>
-            <p class="timeline__note">Building interactive prototypes for a company website redesign.</p>
-          </div>
-        </li>
-        <li class="timeline__item">
-          <span class="timeline__when">2025</span>
-          <div class="timeline__what">
-            <strong>TakeOff Media</strong> &middot; Software Engineer Intern
-            <span class="timeline__where">Montevideo, Uruguay</span>
-            <p class="timeline__note">Built semantic search across 1,000+ educational videos.</p>
-          </div>
-        </li>
-        <li class="timeline__item">
-          <span class="timeline__when">2024</span>
-          <div class="timeline__what">
-            <strong>North-West Soccer Camp</strong> &middot; Founder
-            <span class="timeline__where">Washington DC</span>
-            <p class="timeline__note">Ran six training programs for 50+ young players.</p>
-          </div>
-        </li>
-        <li class="timeline__item">
-          <span class="timeline__when">2023</span>
-          <div class="timeline__what">
-            <strong>MIDES</strong> &middot; Data Analyst Intern
-            <span class="timeline__where">Montevideo, Uruguay</span>
-            <p class="timeline__note">Studied water pricing during Uruguay's national drought.</p>
-          </div>
-        </li>
-      </ol>
-
-      <p class="experience__resume">
-        Full details on my
-        <a href="https://github.com/Marcomercader/resume/raw/main/Marco%20Opertti%20Resume%202026.pdf" target="_blank" rel="noopener">resume PDF</a>.
-      </p>
-    </section>
-
-    <!-- ============ SECTION 5: COURSEWORK ============ -->
-    <section id="coursework" class="section">
-      <h2 class="section__title">coursework</h2>
-
-      <div class="edu">
-        <div class="edu__head">
-          <div>
-            <h3 class="edu__degree">Computer Science B.S.E.</h3>
-            <p class="edu__school">University of Pennsylvania &middot; SEAS</p>
-          </div>
-          <div class="edu__stats">
-            <div class="edu__stat">
-              <span class="edu__stat-label">GPA</span>
-              <span class="edu__stat-value">3.73</span>
-            </div>
-            <div class="edu__stat">
-              <span class="edu__stat-label">class of</span>
-              <span class="edu__stat-value">2028</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Aug 2024 -> May 2028, roughly halfway as of mid-2026 -->
-        <div class="edu__progress">
-          <span class="edu__progress-label" aria-hidden="true">// degree progress</span>
-          <div class="edu__progress-track" role="img" aria-label="Degree progress: about 50 percent, August 2024 to May 2028">
-            <span class="edu__progress-fill" style="--pct: 51%"></span>
-          </div>
-          <span class="edu__progress-pct" aria-hidden="true">51%</span>
-        </div>
-
-        <div class="edu__row">
-          <span class="edu__label">minors</span>
-          <div class="edu__chips">
-            <a class="minor-chip minor-chip--link" href="design/">
-              Design portfolio (UX/UI)
-              <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a>
-            <span class="minor-chip minor-chip--plain">Engineering Entrepreneurship</span>
-          </div>
-        </div>
-
-        <div class="edu__row">
-          <span class="edu__label">relevant coursework</span>
-          <ul class="tags edu__tags" aria-label="Relevant coursework">
-            <li>Data Structures</li>
-            <li>Algorithms</li>
-            <li>Discrete Mathematics</li>
-            <li>Linear Algebra</li>
-            <li>Computer Systems</li>
-            <li>Probability</li>
-            <li>CAD (SolidWorks &amp; Rhino)</li>
-          </ul>
-        </div>
-
-        <p class="edu__note">I started in Mathematical Economics, then switched to computer science because I wanted to build.</p>
-      </div>
-    </section>
-
-    <!-- ============ SECTION 6: ACTIVITIES ============ -->
-    <section id="activities" class="section">
-      <h2 class="section__title">activities</h2>
-
-      <ul class="activities">
-        <li class="activity">
-          <span class="activity__icon" aria-hidden="true"><svg class="icon"><use href="#i-sparkles"/></svg></span>
-          <div class="activity__body">
-            <h3 class="activity__title">Latino cultural festival</h3>
-            <p class="activity__desc">
-              I co-organize Penn's largest Latino festival, with 2,000+ attendees and
-              $10,000+ raised for nonprofits.
-            </p>
-          </div>
-        </li>
-
-        <li class="activity">
-          <span class="activity__icon" aria-hidden="true"><svg class="icon"><use href="#i-award"/></svg></span>
-          <div class="activity__body">
-            <h3 class="activity__title">UPenn club soccer captain</h3>
-            <p class="activity__desc">
-              Captain of the Dolphinos, Penn's club soccer team.
-            </p>
-          </div>
-        </li>
-
-        <li class="activity">
-          <span class="activity__icon" aria-hidden="true"><svg class="icon"><use href="#i-flag"/></svg></span>
-          <div class="activity__body">
-            <h3 class="activity__title">Wharton Latino</h3>
-            <p class="activity__desc">
-              I help run events and mentorship for the club.
-            </p>
-          </div>
-        </li>
-
-        <li class="activity">
-          <span class="activity__icon" aria-hidden="true"><svg class="icon"><use href="#i-book"/></svg></span>
-          <div class="activity__body">
-            <h3 class="activity__title">Curious Cardinals tutor</h3>
-            <p class="activity__desc">
-              I mentor younger students through schoolwork and passion projects.
-            </p>
-          </div>
-        </li>
-
-        <li class="activity">
-          <span class="activity__icon" aria-hidden="true"><svg class="icon"><use href="#i-flag"/></svg></span>
-          <div class="activity__body">
-            <h3 class="activity__title">UPenn Ski Club</h3>
-            <p class="activity__desc">I compete in snowboard slalom and freestyle.</p>
-          </div>
-        </li>
+    <section id="about">
+      <h2>Who am I?</h2>
+      <ul class="bio">
+        <li>Computer Science at Penn. From Uruguay and Washington, D.C.</li>
+        <li>Interested in design and useful software. Currently working on <a href="#smooth">Smooth</a>.</li>
+        <li>Passionate about making an impact in the startup space.</li>
       </ul>
     </section>
 
-    <!-- ============ SECTION 7: HOBBIES (compact) ============ -->
-    <section id="hobbies" class="section section--slim">
-      <h2 class="section__title">hobbies</h2>
-      <div class="hobbies" aria-label="Hobbies">
-        <button class="hobby-card" type="button" data-hobby="sports" aria-haspopup="dialog" aria-controls="hobby-modal"><span aria-hidden="true">⚽</span> sports</button>
-        <button class="hobby-card" type="button" data-hobby="cooking" aria-haspopup="dialog" aria-controls="hobby-modal"><span aria-hidden="true">🍳</span> cooking</button>
-        <button class="hobby-card" type="button" data-hobby="traveling" aria-haspopup="dialog" aria-controls="hobby-modal"><span aria-hidden="true">✈️</span> traveling</button>
-        <button class="hobby-card" type="button" data-hobby="altinha" aria-haspopup="dialog" aria-controls="hobby-modal"><span aria-hidden="true">⛱️</span> altinha</button>
-        <button class="hobby-card" type="button" data-hobby="mate-circles" aria-haspopup="dialog" aria-controls="hobby-modal"><span aria-hidden="true">🧉</span> maté circles</button>
+    <section id="projects">
+      <h2>Projects</h2>
+      <article class="project" id="smooth">
+        <h3>Smooth</h3>
+        <p>An academic assistant that brings assignments, deadlines, and course context together. Built for iOS and macOS. 50+ active users, 100 downloads.</p>
+        <p class="links"><a href="https://apps.apple.com/us/app/smooth-for-students/id6783911002" target="_blank" rel="noopener">App Store</a><a href="https://github.com/OlisaNW247/penn-dashboard" target="_blank" rel="noopener">GitHub</a></p>
+      </article>
+      <article class="project" id="project-monk">
+        <h3>Monk</h3>
+        <p>A habit and goal tracker with an AI guide that keeps context across check-ins.</p>
+        <p class="links"><a href="https://monkapp.vercel.app/onboarding" target="_blank" rel="noopener">Try Monk</a></p>
+      </article>
+      <article class="project" id="project-geoguessr">
+        <h3>Penn GeoGuessr</h3>
+        <p>A campus guessing game with 50+ Penn locations, distance scoring, and saved high scores. Built in Java, by hand, without AI.</p>
+        <p class="links"><a href="https://github.com/Marcomercader/PennGeoguessr" target="_blank" rel="noopener">GitHub</a></p>
+      </article>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <ul class="entries">
+        <li><span class="date">Oct 2026</span><div><strong>AI Data Center Startup</strong> · Design Engineer<p>Built AI tools for land research and data center site planning.</p></div></li>
+        <li><span class="date">2026</span><div><strong>LightFeather</strong> · Software Engineer Intern<p>Rebuilt the company website and automated candidate grading.</p></div></li>
+        <li><span class="date">2025</span><div><strong>TakeOff Media</strong> · Software Engineer Intern<p>Built semantic search across 1,000+ educational videos.</p></div></li>
+        <li><span class="date">2024</span><div><strong>North-West Soccer Camp</strong> · Founder<p>Ran six training programs for 50+ young players.</p></div></li>
+        <li><span class="date">2023</span><div><strong>MIDES</strong> · Data Analyst Intern<p>Studied water pricing during Uruguay’s national drought.</p></div></li>
+      </ul>
+    </section>
+
+    <section id="coursework">
+      <h2>Education</h2>
+      <p><strong>Computer Science B.Sc.</strong> · Penn, 2028</p>
+      <p>Minors in Design and Engineering Entrepreneurship.</p>
+      <p class="secondary">Data Structures, Algorithms, Computer Systems, Discrete Mathematics, Linear Algebra, Probability, and CAD.</p>
+      <p class="secondary">I started in Mathematical Economics, then switched to computer science because I wanted to build.</p>
+    </section>
+
+    <section id="activities">
+      <h2>Activities</h2>
+      <ul class="plain-list">
+        <li><strong>Latino cultural festival.</strong> Co-organizer; 2,000+ attendees, $10,000+ raised.</li>
+        <li><strong>Penn club soccer.</strong> Captain of the Dolphinos.</li>
+        <li><strong>Wharton Latino.</strong> Events and mentorship.</li>
+        <li><strong>Curious Cardinals.</strong> Tutoring and passion projects.</li>
+        <li><strong>Penn Ski Club.</strong> Snowboard slalom and freestyle.</li>
+      </ul>
+    </section>
+
+    <section id="hobbies">
+      <h2>Hobbies</h2>
+      <div class="links">
+        <button class="text-link" type="button" data-hobby="sports" aria-haspopup="dialog">Sports</button>
+        <button class="text-link" type="button" data-hobby="cooking" aria-haspopup="dialog">Cooking</button>
+        <button class="text-link" type="button" data-hobby="traveling" aria-haspopup="dialog">Traveling</button>
+        <button class="text-link" type="button" data-hobby="altinha" aria-haspopup="dialog">Altinha</button>
+        <button class="text-link" type="button" data-hobby="mate-circles" aria-haspopup="dialog">Maté circles</button>
       </div>
     </section>
   </main>
 
-  <!-- ============ DESIGN MINOR EASTER EGG ============ -->
-  <div class="modal" id="design-modal" role="dialog" aria-modal="true" aria-labelledby="design-modal-title" hidden>
-    <div class="modal__backdrop" data-close-modal></div>
-    <div class="modal__panel">
-      <div class="modal__bar">
-        <span class="terminal__dot terminal__dot--red" aria-hidden="true"></span>
-        <span class="terminal__dot terminal__dot--yellow" aria-hidden="true"></span>
-        <span class="terminal__dot terminal__dot--green" aria-hidden="true"></span>
-        <span class="modal__title" id="design-modal-title">~/design-portfolio</span>
-        <button class="icon-btn modal__close" type="button" data-close-modal aria-label="Close design projects">
-          <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
-        </button>
-      </div>
-      <div class="modal__body">
-        <p class="modal__intro">Design work from class and beyond.</p>
-        <div class="design-grid">
-          <figure class="design-item">
-            <img src="assets/design/embroidered-jeans.jpg" alt="Marco wearing dark denim jeans with a hand-embroidered dragon patch on the back pocket" loading="lazy" width="768" height="1024" />
-            <figcaption>01 &middot; Hand-embroidered denim.</figcaption>
-          </figure>
-          <figure class="design-item">
-            <video src="assets/design/dada-composite.mp4" muted loop playsinline controls preload="metadata" aria-label="Dada composite video collage"></video>
-            <figcaption>02 &middot; Dada video collage.</figcaption>
-          </figure>
-          <figure class="design-item">
-            <img src="assets/design/capi-system.png" alt="Exploded product diagram of the Capí insulated maté bottle" loading="lazy" width="1056" height="1582" />
-            <figcaption>03 &middot; Capí insulated maté bottle.</figcaption>
-          </figure>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Hobby photo lightbox: shows assets/hobbies/<name>.jpg when it exists,
-       otherwise a "photos coming soon" placeholder. -->
-  <div class="modal" id="hobby-modal" role="dialog" aria-modal="true" aria-labelledby="hobby-modal-title" hidden>
-    <div class="modal__backdrop" data-close-modal></div>
-    <div class="modal__panel modal__panel--sm">
-      <div class="modal__bar">
-        <span class="terminal__dot terminal__dot--red" aria-hidden="true"></span>
-        <span class="terminal__dot terminal__dot--yellow" aria-hidden="true"></span>
-        <span class="terminal__dot terminal__dot--green" aria-hidden="true"></span>
-        <span class="modal__title" id="hobby-modal-title">~/hobbies</span>
-        <button class="icon-btn modal__close" type="button" data-close-modal aria-label="Close hobby photos">
-          <svg class="icon" aria-hidden="true"><use href="#i-x"/></svg>
-        </button>
-      </div>
-      <div class="modal__body">
-        <img class="hobby-photo" id="hobby-photo" alt="" hidden />
-        <div class="hobby-fallback" id="hobby-fallback" hidden>photos coming soon</div>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js?v=2" defer></script>
+  <dialog id="hobby-modal" aria-labelledby="hobby-title">
+    <div class="dialog-heading"><h2 id="hobby-title">Hobbies</h2><button class="text-link" type="button" id="close-hobby">Close</button></div>
+    <img id="hobby-photo" alt="" />
+    <p id="hobby-fallback" hidden>Photos coming soon.</p>
+  </dialog>
+  <script src="script.js?v=6" defer></script>
 </body>
 </html>

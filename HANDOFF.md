@@ -1,3 +1,11 @@
+# Current direction: October 19, 2026
+
+The site now uses a white background, black/gray text, local Roobert headings, and Inter body type. Read README.md and current code first. The historical notes below describe earlier versions and their styling constraints are superseded by the user’s minimalist redesign request.
+
+All main content stays visible: no accordion or terminal. Projects includes Smooth, Monk, and Penn GeoGuessr. Header links include Portfolio and the local assets/Marco_Resume.pdf. The AI Data Center Startup Design Engineer experience uses the October 2026 role from the supplied resume, with the public company label requested by the user. Keep the portrait and its clickable asterisk animation with a diagonal sweep of tiny binary digits, and keep hobby photo dialogs. Portfolio has the same restrained styling with existing media preserved and no asterisk.
+
+---
+
 # Handoff — Marco Opertti portfolio
 
 Paste this to a fresh Claude Code session (e.g. in VS Code) to pick up where the last one left off.
